@@ -1,0 +1,153 @@
+05.06 05.01
+index.html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SatuKabar - Portal Berita Terkini</title>
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --text: #000;
+      --card: #fff;
+      --nav: #0c47a1;
+      --main: #1a73e8;
+    }
+    body.dark {
+      --bg: #121212;
+      --text: #f1f1f1;
+      --card: #1e1e1e;
+      --nav: #222;
+      --main: #333;
+    }
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+    header {
+      background: var(--main);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: var(--nav);
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    #toggle-theme {
+      float: right;
+      background: white;
+      color: var(--main);
+      border: none;
+      padding: 5px 10px;
+      margin-top: -30px;
+      cursor: pointer;
+    }
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .headline, .article {
+      background: var(--card);
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+    .article {
+      border-left: 4px solid var(--main);
+    }
+    #search {
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    footer {
+      background: var(--main);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>SatuKabar</h1>
+  <p>Portal Berita Terkini, Akurat & Terpercaya</p>
+  <button id="toggle-theme">Ubah Tema</button>
+</header>
+
+<nav>
+  <a href="#">Beranda</a>
+  <a href="#">Nasional</a>
+  <a href="#">Teknologi</a>
+  <a href="#">Olahraga</a>
+</nav>
+
+<main>
+  <input type="text" id="search" placeholder="Cari berita...">
+
+  <section class="headline">
+    <h2>Berita Utama Hari Ini</h2>
+    <p><strong>Presiden Resmikan Proyek Infrastruktur Terbesar Tahun Ini</strong><br/>Jakarta — Dalam kunjungan kerja hari ini, Presiden menyampaikan...</p>
+  </section>
+
+  <div id="articles">
+    <section class="article">
+      <h3>Perkembangan Teknologi AI di Indonesia</h3>
+      <p>Penggunaan kecerdasan buatan terus meningkat di berbagai sektor mulai dari kesehatan hingga pertanian.</p>
+    </section>
+
+    <section class="article">
+      <h3>Timnas U-23 Lolos ke Final Piala Asia</h3>
+      <p>Dalam pertandingan sengit, Timnas Indonesia berhasil mengalahkan Jepang dan melaju ke babak final.</p>
+    </section>
+
+    <section class="article">
+      <h3>Harga Pangan Stabil Menjelang Lebaran</h3>
+      <p>Beberapa komoditas seperti beras dan daging menunjukkan tren harga stabil menjelang hari raya.</p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 SatuKabar. Semua hak dilindungi.
+</footer>
+
+<script>
+  // Tema Gelap/Terang
+  const toggle = document.getElementById("toggle-theme");
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+  });
+
+  // Filter Berita
+  const searchInput = document.getElementById("search");
+  searchInput.addEventListener("input", function () {
+    const keyword = this.value.toLowerCase();
+    const articles = document.querySelectorAll(".article");
+    articles.forEach(article => {
+      const text = article.textContent.toLowerCase();
+      article.style.display = text.includes(keyword) ? "block" : "none";
+    });
+  });
+</script>
+
+</body>
+</html>
